@@ -1,0 +1,22 @@
+{% load static %}
+<html>
+
+<head>
+  <meta http-equiv="refresh" content="3">
+</head>
+
+<body>
+  <div id="output">
+    <div id="status">运行状态：{{status|yesno:"正常,出错,未知"}}</div>
+    <div id="col_count">采集次数：{{col_count}}</div>
+    <div id="err_count">出错次数：{{err_count}}</div>
+    <div id="col_interval_time">采集耗时：{{col_interval_time}}秒</div>
+  </div>
+
+
+</body>
+<script type="text/javascript">
+
+</script>
+
+</html>

@@ -1,0 +1,93 @@
+{% load static %}
+<html>
+
+<head>
+  <script src="{% static 'django_eventstream/json2.js' %}"></script>
+  <script src="{% static 'django_eventstream/eventsource.min.js' %}"></script>
+  <script src="{% static 'django_eventstream/reconnecting-eventsource.js' %}"></script>
+
+</head>
+
+<body onload="start()">
+  <div id="output">
+
+  </div>
+
+  <script type="text/javascript">
+
+
+    var logMessage = function (s) {
+      var outputDiv = document.getElementById('output');
+      outputDiv.innerHTML = outputDiv.innerHTML + s + '<br />';
+    };
+
+    var data_show_item = function (item) {
+      var num_value = item.adjust_value
+      const num_list = num_value.toString().split(".")
+      if (num_list.length > 1) {
+        const str_num = num_list[1].toString()
+        if (str_num.length > 2) {
+          num_value = Number(num_value).toFixed(2)
+        }
+      }
+
+      var str = "<li>"
+      str = str + item.sensor_name + ":"
+      str = str + "<strong><font color='blue'>" + num_value + "</font></strong>"
+      str = str + item.sensor_unit
+      str = str + "</li>"
+      return str;
+    };
+
+    var show_data = function (ioc_data) {
+
+      var outputDiv = document.getElementById('output');
+      var str = "<ol>";
+      for (const element of ioc_data) {
+        str = str + data_show_item(element);
+      };
+      str = str + "</ol>";
+      outputDiv.innerHTML = str
+    };
+
+
+    var start = function () {
+
+
+      {% if last_id %}
+      var es = new ReconnectingEventSource('{{ url|safe }}', {
+        lastEventId: '{{ last_id }}'
+      });
+      {% else %}
+      var es = new ReconnectingEventSource('{{ url|safe }}');
+      {% endif %}
+
+      es.onopen = function () {
+
+      };
+
+      es.onerror = function () {
+        logMessage('connection error');
+      };
+
+      es.addEventListener('stream-reset', function (e) {
+        e = JSON.parse(e.data);
+        logMessage('stream reset: ' + JSON.stringify(e.channels));
+      }, false);
+
+      es.addEventListener('stream-error', function (e) {
+        // hard stop
+        es.close();
+        e = JSON.parse(e.data);
+        logMessage('stream error: ' + e.condition + ': ' + e.text);
+      }, false);
+
+      es.addEventListener('message', function (e) {
+        var ioc_data = JSON.parse(e.data);
+        show_data(ioc_data);
+      }, false);
+    };
+  </script>
+</body>
+
+</html>

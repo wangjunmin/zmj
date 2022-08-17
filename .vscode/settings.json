@@ -1,0 +1,112 @@
+{
+  "python.pythonPath": "D:\\app\\anaconda\\python.exe",
+  "editor.formatOnSave": true,
+  "python.linting.pycodestyleEnabled": true,
+  "python.linting.pylintPath": "pylint",
+  "python.linting.pylintArgs": ["--load-plugins", "pylint_django"],
+  "python.linting.pylintEnabled": true,
+  "python.venvPath": "${workspaceFolder}/env/bin/python3",
+  "python.linting.pycodestyleArgs": ["--ignore=E501"],
+  "files.exclude": {
+    "**/*.pyc": true,
+    "**/env": true,
+    "**/media": true
+  },
+  "editor.tabSize": 2,
+  "editor.lineHeight": 24,
+  "editor.renderLineHighlight": "none",
+  "editor.renderWhitespace": "none",
+  "editor.fontFamily": "'Courier New'",
+  "editor.fontSize": 19,
+  "editor.cursorBlinking": "smooth",
+  "editor.multiCursorModifier": "ctrlCmd",
+  "editor.snippetSuggestions": "top",
+  "editor.wordWrapColumn": 200,
+  "editor.wordWrap": "off",
+  "editor.quickSuggestions": {
+    "other": true,
+    "comments": true,
+    "strings": false
+  },
+  // 保存时自动格式化
+  "editor.formatOnPaste": false,
+  "files.trimTrailingWhitespace": true,
+  "typescript.suggest.autoImports": true,
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "javascript.suggest.autoImports": true,
+
+  "workbench.colorCustomizations": {
+    // 设置guide线高亮颜色
+    "editorIndentGuide.activeBackground": "#ff0000"
+  },
+  // 启用/禁用导航路径
+  "breadcrumbs.enabled": true,
+  // git是否启用自动拉取
+
+  // VScode 文件搜索区域配置
+  "search.exclude": {
+    "**/dist": true,
+    "**/build": true,
+    "**/elehukouben": true,
+    "**/.git": true,
+    "**/.gitignore": true,
+    "**/.svn": true,
+    "**/.DS_Store": true,
+    "**/.idea": true,
+    "**/.vscode": false,
+    "**/yarn.lock": true,
+    "**/tmp": true
+  },
+  // 配置文件关联
+  "files.associations": {
+    "*.vue": "html",
+    "*.wxss": "css",
+    "*.cjson": "jsonc",
+    "*.wxs": "javascript"
+  },
+  // 配置emmet是否启用tab展开缩写
+  "emmet.triggerExpansionOnTab": true,
+  // 配置emmet对文件类型的支持
+  "emmet.syntaxProfiles": {
+    "vue-html": "html",
+    "vue": "html",
+    "javascript": "javascriptreact",
+    "xml": {
+      "attr_quotes": "single"
+    }
+  },
+
+  // 是否开启eslint检测
+  "eslint.enable": true,
+  // 文件保存时，是否自动根据eslint进行格式化
+  "eslint.autoFixOnSave": false,
+
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    {
+      "language": "vue",
+      "autoFix": true
+    },
+    "html",
+    "typescript",
+    "typescriptreact"
+  ],
+  // 格式化快捷键 shirt+alt+F
+  // prettier进行格式化时是否安装eslint配置去执行，建议false
+  "prettier.eslintIntegration": false,
+  // 如果为true，将使用单引号而不是双引号
+  "prettier.singleQuote": true,
+  // 代码换行,每一行最大占有字符数
+  "prettier.printWidth": 200,
+
+  // 是否格式化python文件
+  "python.linting.enabled": false,
+  // 设置端口。开启apicloud在vscode中的wifi真机同步
+
+  "files.autoSave": "afterDelay",
+
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact"
+  }
+}
